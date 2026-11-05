@@ -71,19 +71,54 @@ BUREAU_SCORE_PROXY = ["EXT_SOURCE_1", "EXT_SOURCE_2", "EXT_SOURCE_3"]
 
 FEATURE_NAMES = [name for name, *_ in FEATURE_SPEC]
 DAYS_EMPLOYED_PLACEHOLDER = 365243  # Home Credit's code for "no employment record"
+_EPS = 1  # same division guard as src/feature_engineering.py
+
+
+def derive_application_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Compute the application-level features from raw fields.
+
+    Accepts either ready-made AGE_YEARS / EMPLOYMENT_YEARS or the benchmark's
+    DAYS_BIRTH / DAYS_EMPLOYED. Formulas match src/feature_engineering.py exactly
+    (the +1 guards against division by zero), so a single applicant scored at
+    runtime gets the same values the model was trained on.
+    """
+    out = df.copy()
+    if "AGE_YEARS" not in out:
+        out["AGE_YEARS"] = (-out["DAYS_BIRTH"]) / 365.25
+    if "EMPLOYMENT_YEARS" not in out:
+        out["EMPLOYMENT_YEARS"] = (-out["DAYS_EMPLOYED"]).clip(lower=0) / 365.25
+    if "NO_EMPLOYMENT_RECORD" not in out:
+        out["NO_EMPLOYMENT_RECORD"] = (
+            out.get("DAYS_EMPLOYED", pd.Series(0, index=out.index)) == DAYS_EMPLOYED_PLACEHOLDER
+        ).astype(int)
+
+    income, credit, annuity = out["AMT_INCOME_TOTAL"], out["AMT_CREDIT"], out["AMT_ANNUITY"]
+    out["LOAN_INCOME_RATIO"] = credit / (income + _EPS)
+    out["ANNUITY_INCOME_RATIO"] = annuity / (income + _EPS)
+    out["CREDIT_TERM"] = annuity / (credit + _EPS)
+    out["INCOME_PER_PERSON"] = income / out["CNT_FAM_MEMBERS"].clip(lower=1)
+    out["EMPLOY_TO_AGE_RATIO"] = out["EMPLOYMENT_YEARS"] / (out["AGE_YEARS"] + 0.01)
+    return out
 
 
 def build_micro_features(df: pd.DataFrame, include_bureau_score: bool = True) -> pd.DataFrame:
-    """Return the micro-lending feature matrix from the engineered benchmark table."""
-    out = df.copy()
-    out["NO_EMPLOYMENT_RECORD"] = (out["DAYS_EMPLOYED"] == DAYS_EMPLOYED_PLACEHOLDER).astype(int)
+    """Return the micro-lending feature matrix.
+
+    `df` is either the engineered benchmark table or a frame of applicant inputs.
+    Bureau and lender-history fields that are absent are treated as missing, and the
+    thin-file flags are derived from that missingness.
+    """
+    out = derive_application_features(df)
+    for col in ("bureau_loan_count", "prev_app_count"):
+        if col not in out:
+            out[col] = np.nan
     out["HAS_BUREAU_FILE"] = out["bureau_loan_count"].notna().astype(int)
     out["HAS_LENDER_HISTORY"] = out["prev_app_count"].notna().astype(int)
 
     cols = list(FEATURE_NAMES)
     if include_bureau_score:
         cols += BUREAU_SCORE_PROXY
-    missing = [c for c in cols if c not in out.columns]
-    if missing:
-        raise KeyError(f"Missing columns for micro profile: {missing}")
-    return out[cols].replace([np.inf, -np.inf], np.nan)
+    for c in cols:  # optional inputs the applicant did not supply
+        if c not in out:
+            out[c] = np.nan
+    return out[cols].astype(float).replace([np.inf, -np.inf], np.nan)

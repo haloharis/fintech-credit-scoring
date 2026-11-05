@@ -1,0 +1,973 @@
+{
+  "n_features": 21,
+  "features": [
+    "EXT_SOURCE_3",
+    "EXT_SOURCE_2",
+    "EXT_SOURCE_1",
+    "CREDIT_TERM",
+    "debt_to_credit_ratio",
+    "EMPLOYMENT_YEARS",
+    "bureau_loans_last_12m",
+    "earliest_bureau_days",
+    "bb_months_covered",
+    "bureau_loans_last_24m",
+    "late_payment_ratio",
+    "late_ratio_last_12m",
+    "approval_rate",
+    "bb_dpd_ratio",
+    "payment_to_due_ratio",
+    "active_credits",
+    "refused_apps",
+    "AMT_CREDIT",
+    "max_days_late",
+    "refusals_last_12m",
+    "AMT_ANNUITY"
+  ],
+  "scale": {
+    "base_score": 600.0,
+    "base_odds_good_to_bad": 30.0,
+    "pdo": 20.0
+  },
+  "band_cutoffs": [
+    559.0,
+    576.0,
+    590.0,
+    605.0
+  ],
+  "holdout": {
+    "AUC": 0.7466,
+    "Gini": 0.4931,
+    "KS": 0.3693
+  },
+  "bands": [
+    {
+      "band": "Very Poor",
+      "n": 11652,
+      "bad_rate": 0.2051,
+      "share": 0.1895
+    },
+    {
+      "band": "Poor",
+      "n": 12613,
+      "bad_rate": 0.097,
+      "share": 0.2051
+    },
+    {
+      "band": "Fair",
+      "n": 12317,
+      "bad_rate": 0.0559,
+      "share": 0.2003
+    },
+    {
+      "band": "Good",
+      "n": 12213,
+      "bad_rate": 0.0345,
+      "share": 0.1986
+    },
+    {
+      "band": "Excellent",
+      "n": 12708,
+      "bad_rate": 0.019,
+      "share": 0.2066
+    }
+  ],
+  "bad_rate_monotonic": true,
+  "decisions": [
+    {
+      "decision": "Approve",
+      "n": 24448,
+      "bad_rate": 0.0265,
+      "share": 0.3975
+    },
+    {
+      "decision": "Decline",
+      "n": 11802,
+      "bad_rate": 0.2033,
+      "share": 0.1919
+    },
+    {
+      "decision": "Refer",
+      "n": 25253,
+      "bad_rate": 0.076,
+      "share": 0.4106
+    }
+  ],
+  "points_table": [
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(-0.000473, 0.257]",
+      "woe": -0.9696,
+      "points": 10.2
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.257, 0.371]",
+      "woe": -0.379,
+      "points": 20.6
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.371, 0.458]",
+      "woe": -0.0796,
+      "points": 25.8
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.458, 0.535]",
+      "woe": -0.0338,
+      "points": 26.6
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.535, 0.604]",
+      "woe": 0.4436,
+      "points": 35.1
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.604, 0.669]",
+      "woe": 0.6169,
+      "points": 38.1
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.669, 0.735]",
+      "woe": 0.8464,
+      "points": 42.2
+    },
+    {
+      "feature": "EXT_SOURCE_3",
+      "bin": "(0.735, 0.896]",
+      "woe": 0.9316,
+      "points": 43.7
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(-0.0009999183, 0.216]",
+      "woe": -0.9339,
+      "points": 5.1
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.216, 0.341]",
+      "woe": -0.4482,
+      "points": 16.6
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.341, 0.441]",
+      "woe": -0.2226,
+      "points": 22.0
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.441, 0.513]",
+      "woe": -0.0401,
+      "points": 26.3
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.513, 0.566]",
+      "woe": 0.0826,
+      "points": 29.2
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.566, 0.608]",
+      "woe": 0.2227,
+      "points": 32.5
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.608, 0.646]",
+      "woe": 0.3451,
+      "points": 35.4
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.646, 0.682]",
+      "woe": 0.5013,
+      "points": 39.1
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.682, 0.722]",
+      "woe": 0.6935,
+      "points": 43.7
+    },
+    {
+      "feature": "EXT_SOURCE_2",
+      "bin": "(0.722, 0.855]",
+      "woe": 1.0571,
+      "points": 52.3
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.013600000000000001, 0.318]",
+      "woe": -0.6084,
+      "points": 17.1
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.318, 0.477]",
+      "woe": -0.0197,
+      "points": 26.9
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.477, 0.506]",
+      "woe": -0.0518,
+      "points": 26.4
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.506, 0.534]",
+      "woe": 0.2812,
+      "points": 31.9
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.534, 0.69]",
+      "woe": 0.4913,
+      "points": 35.5
+    },
+    {
+      "feature": "EXT_SOURCE_1",
+      "bin": "(0.69, 0.952]",
+      "woe": 0.9993,
+      "points": 44.0
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0211, 0.0294]",
+      "woe": 0.3433,
+      "points": 32.7
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0294, 0.0332]",
+      "woe": 0.1545,
+      "points": 29.7
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0332, 0.0397]",
+      "woe": 0.1019,
+      "points": 28.9
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0397, 0.0454]",
+      "woe": 0.4839,
+      "points": 34.9
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0454, 0.05]",
+      "woe": -0.4844,
+      "points": 19.6
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.05, 0.0512]",
+      "woe": 0.4458,
+      "points": 34.3
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0512, 0.0562]",
+      "woe": -0.2378,
+      "points": 23.5
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0562, 0.0682]",
+      "woe": -0.216,
+      "points": 23.8
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.0682, 0.095]",
+      "woe": -0.3789,
+      "points": 21.2
+    },
+    {
+      "feature": "CREDIT_TERM",
+      "bin": "(0.095, 0.124]",
+      "woe": 0.5266,
+      "points": 35.6
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(-175.29, 0.0]",
+      "woe": 0.3708,
+      "points": 31.2
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.0, 0.0242]",
+      "woe": 0.3481,
+      "points": 30.9
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.0242, 0.123]",
+      "woe": 0.2574,
+      "points": 30.0
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.123, 0.224]",
+      "woe": 0.1878,
+      "points": 29.2
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.224, 0.326]",
+      "woe": 0.0966,
+      "points": 28.3
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.326, 0.433]",
+      "woe": -0.0354,
+      "points": 26.9
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.433, 0.558]",
+      "woe": -0.199,
+      "points": 25.1
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.558, 0.733]",
+      "woe": -0.364,
+      "points": 23.4
+    },
+    {
+      "feature": "debt_to_credit_ratio",
+      "bin": "(0.733, 5.843]",
+      "woe": -0.5984,
+      "points": 20.9
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(-0.001, 0.402]",
+      "woe": 0.3368,
+      "points": 32.2
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(0.402, 1.257]",
+      "woe": -0.3762,
+      "points": 21.7
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(1.257, 2.251]",
+      "woe": -0.3724,
+      "points": 21.7
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(2.251, 3.326]",
+      "woe": -0.286,
+      "points": 23.0
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(3.326, 4.643]",
+      "woe": -0.1799,
+      "points": 24.6
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(4.643, 6.475]",
+      "woe": -0.017,
+      "points": 27.0
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(6.475, 8.85]",
+      "woe": 0.1033,
+      "points": 28.8
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(8.85, 13.402]",
+      "woe": 0.3006,
+      "points": 31.7
+    },
+    {
+      "feature": "EMPLOYMENT_YEARS",
+      "bin": "(13.402, 49.04]",
+      "woe": 0.581,
+      "points": 35.8
+    },
+    {
+      "feature": "bureau_loans_last_12m",
+      "bin": "(-0.001, 1.0]",
+      "woe": 0.1644,
+      "points": 27.7
+    },
+    {
+      "feature": "bureau_loans_last_12m",
+      "bin": "(1.0, 2.0]",
+      "woe": -0.169,
+      "points": 26.8
+    },
+    {
+      "feature": "bureau_loans_last_12m",
+      "bin": "(2.0, 3.0]",
+      "woe": -0.4168,
+      "points": 26.1
+    },
+    {
+      "feature": "bureau_loans_last_12m",
+      "bin": "(3.0, 34.0]",
+      "woe": -0.7818,
+      "points": 25.0
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-2922.001, -2808.0]",
+      "woe": 0.3282,
+      "points": 28.1
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-2808.0, -2662.0]",
+      "woe": 0.2466,
+      "points": 27.9
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-2662.0, -2497.0]",
+      "woe": 0.2774,
+      "points": 28.0
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-2497.0, -2264.0]",
+      "woe": 0.2196,
+      "points": 27.8
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-2264.0, -1828.0]",
+      "woe": 0.1649,
+      "points": 27.7
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-1828.0, -1497.0]",
+      "woe": 0.0494,
+      "points": 27.4
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-1497.0, -1190.0]",
+      "woe": -0.0622,
+      "points": 27.1
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-1190.0, -860.0]",
+      "woe": -0.1329,
+      "points": 26.9
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-860.0, -501.0]",
+      "woe": -0.2724,
+      "points": 26.5
+    },
+    {
+      "feature": "earliest_bureau_days",
+      "bin": "(-501.0, 0.0]",
+      "woe": -0.5221,
+      "points": 25.9
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(0.999, 14.0]",
+      "woe": -0.4638,
+      "points": 25.4
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(14.0, 24.0]",
+      "woe": -0.2964,
+      "points": 26.1
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(24.0, 34.0]",
+      "woe": -0.1509,
+      "points": 26.6
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(34.0, 43.0]",
+      "woe": -0.0373,
+      "points": 27.1
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(43.0, 52.0]",
+      "woe": 0.0136,
+      "points": 27.3
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(52.0, 62.0]",
+      "woe": 0.0826,
+      "points": 27.6
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(62.0, 75.0]",
+      "woe": 0.2428,
+      "points": 28.2
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(75.0, 84.0]",
+      "woe": 0.2898,
+      "points": 28.4
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(84.0, 91.0]",
+      "woe": 0.213,
+      "points": 28.1
+    },
+    {
+      "feature": "bb_months_covered",
+      "bin": "(91.0, 97.0]",
+      "woe": 0.4622,
+      "points": 29.1
+    },
+    {
+      "feature": "bureau_loans_last_24m",
+      "bin": "(-0.001, 1.0]",
+      "woe": 0.2105,
+      "points": 27.6
+    },
+    {
+      "feature": "bureau_loans_last_24m",
+      "bin": "(1.0, 2.0]",
+      "woe": 0.0286,
+      "points": 27.3
+    },
+    {
+      "feature": "bureau_loans_last_24m",
+      "bin": "(2.0, 3.0]",
+      "woe": -0.071,
+      "points": 27.1
+    },
+    {
+      "feature": "bureau_loans_last_24m",
+      "bin": "(3.0, 5.0]",
+      "woe": -0.2092,
+      "points": 26.9
+    },
+    {
+      "feature": "bureau_loans_last_24m",
+      "bin": "(5.0, 66.0]",
+      "woe": -0.6563,
+      "points": 26.3
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(-0.001, 0.0159]",
+      "woe": 0.2179,
+      "points": 29.0
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(0.0159, 0.0476]",
+      "woe": 0.1339,
+      "points": 28.3
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(0.0476, 0.0857]",
+      "woe": -0.0386,
+      "points": 26.9
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(0.0857, 0.143]",
+      "woe": -0.2067,
+      "points": 25.6
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(0.143, 0.239]",
+      "woe": -0.2499,
+      "points": 25.2
+    },
+    {
+      "feature": "late_payment_ratio",
+      "bin": "(0.239, 1.0]",
+      "woe": -0.48,
+      "points": 23.4
+    },
+    {
+      "feature": "late_ratio_last_12m",
+      "bin": "(-0.001, 0.0385]",
+      "woe": 0.1336,
+      "points": 28.7
+    },
+    {
+      "feature": "late_ratio_last_12m",
+      "bin": "(0.0385, 0.154]",
+      "woe": -0.3155,
+      "points": 23.8
+    },
+    {
+      "feature": "late_ratio_last_12m",
+      "bin": "(0.154, 1.0]",
+      "woe": -0.5296,
+      "points": 21.4
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(-0.001, 0.357]",
+      "woe": -0.521,
+      "points": 19.7
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(0.357, 0.5]",
+      "woe": -0.1965,
+      "points": 24.4
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(0.5, 0.6]",
+      "woe": -0.0349,
+      "points": 26.7
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(0.6, 0.667]",
+      "woe": 0.0667,
+      "points": 28.2
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(0.667, 0.8]",
+      "woe": 0.219,
+      "points": 30.4
+    },
+    {
+      "feature": "approval_rate",
+      "bin": "(0.8, 1.0]",
+      "woe": 0.1705,
+      "points": 29.7
+    },
+    {
+      "feature": "bb_dpd_ratio",
+      "bin": "(-0.001, 0.0049]",
+      "woe": 0.1403,
+      "points": 28.1
+    },
+    {
+      "feature": "bb_dpd_ratio",
+      "bin": "(0.0049, 0.0172]",
+      "woe": -0.0083,
+      "points": 27.2
+    },
+    {
+      "feature": "bb_dpd_ratio",
+      "bin": "(0.0172, 0.0476]",
+      "woe": -0.2308,
+      "points": 25.8
+    },
+    {
+      "feature": "bb_dpd_ratio",
+      "bin": "(0.0476, 1.0]",
+      "woe": -0.5355,
+      "points": 23.8
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(0.219, 0.867]",
+      "woe": -0.4618,
+      "points": 23.6
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(0.867, 0.941]",
+      "woe": -0.2692,
+      "points": 25.1
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(0.941, 0.978]",
+      "woe": -0.1063,
+      "points": 26.4
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(0.978, 1.0]",
+      "woe": 0.1145,
+      "points": 28.1
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(1.0, 1.043]",
+      "woe": 0.1486,
+      "points": 28.4
+    },
+    {
+      "feature": "payment_to_due_ratio",
+      "bin": "(1.043, 2.0]",
+      "woe": 0.3626,
+      "points": 30.1
+    },
+    {
+      "feature": "active_credits",
+      "bin": "(-0.001, 1.0]",
+      "woe": 0.1794,
+      "points": 28.7
+    },
+    {
+      "feature": "active_credits",
+      "bin": "(1.0, 2.0]",
+      "woe": 0.0405,
+      "points": 27.6
+    },
+    {
+      "feature": "active_credits",
+      "bin": "(2.0, 3.0]",
+      "woe": -0.072,
+      "points": 26.7
+    },
+    {
+      "feature": "active_credits",
+      "bin": "(3.0, 4.0]",
+      "woe": -0.2083,
+      "points": 25.6
+    },
+    {
+      "feature": "active_credits",
+      "bin": "(4.0, 32.0]",
+      "woe": -0.4819,
+      "points": 23.4
+    },
+    {
+      "feature": "refused_apps",
+      "bin": "(-0.001, 1.0]",
+      "woe": 0.1077,
+      "points": 27.5
+    },
+    {
+      "feature": "refused_apps",
+      "bin": "(1.0, 3.0]",
+      "woe": -0.2869,
+      "points": 26.6
+    },
+    {
+      "feature": "refused_apps",
+      "bin": "(3.0, 58.0]",
+      "woe": -0.5482,
+      "points": 26.1
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(44999.999, 180000.0]",
+      "woe": 0.1964,
+      "points": 28.1
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(180000.0, 254700.0]",
+      "woe": 0.0346,
+      "points": 27.4
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(254700.0, 306306.0]",
+      "woe": -0.012,
+      "points": 27.2
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(306306.0, 432567.0]",
+      "woe": -0.2485,
+      "points": 26.2
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(432567.0, 514777.5]",
+      "woe": -0.2028,
+      "points": 26.4
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(514777.5, 604204.2]",
+      "woe": -0.2814,
+      "points": 26.0
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(604204.2, 755190.0]",
+      "woe": -0.0499,
+      "points": 27.0
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(755190.0, 900000.0]",
+      "woe": 0.1409,
+      "points": 27.9
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(900000.0, 1133748.0]",
+      "woe": 0.1846,
+      "points": 28.1
+    },
+    {
+      "feature": "AMT_CREDIT",
+      "bin": "(1133748.0, 4050000.0]",
+      "woe": 0.4323,
+      "points": 29.1
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(-101.001, -9.0]",
+      "woe": 0.1954,
+      "points": 28.4
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(-9.0, -4.0]",
+      "woe": 0.2276,
+      "points": 28.6
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(-4.0, -1.0]",
+      "woe": 0.2962,
+      "points": 28.9
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(-1.0, 0.0]",
+      "woe": 0.1524,
+      "points": 28.1
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(0.0, 1.0]",
+      "woe": 0.012,
+      "points": 27.3
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(1.0, 3.0]",
+      "woe": -0.0354,
+      "points": 27.0
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(3.0, 6.0]",
+      "woe": -0.1267,
+      "points": 26.5
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(6.0, 11.0]",
+      "woe": -0.2389,
+      "points": 25.9
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(11.0, 24.0]",
+      "woe": -0.2307,
+      "points": 25.9
+    },
+    {
+      "feature": "max_days_late",
+      "bin": "(24.0, 2524.0]",
+      "woe": -0.2792,
+      "points": 25.6
+    },
+    {
+      "feature": "refusals_last_12m",
+      "bin": "(-0.001, 1.0]",
+      "woe": 0.0546,
+      "points": 27.3
+    },
+    {
+      "feature": "refusals_last_12m",
+      "bin": "(1.0, 54.0]",
+      "woe": -0.5156,
+      "points": 26.9
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(1615.499, 11074.5]",
+      "woe": 0.1407,
+      "points": 29.6
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(11074.5, 14683.5]",
+      "woe": 0.1707,
+      "points": 30.1
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(14683.5, 18171.0]",
+      "woe": -0.0422,
+      "points": 26.5
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(18171.0, 21865.5]",
+      "woe": -0.078,
+      "points": 25.9
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(21865.5, 24903.0]",
+      "woe": -0.0692,
+      "points": 26.1
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(24903.0, 28057.5]",
+      "woe": -0.129,
+      "points": 25.1
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(28057.5, 32017.5]",
+      "woe": -0.2364,
+      "points": 23.3
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(32017.5, 37498.5]",
+      "woe": -0.0474,
+      "points": 26.5
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(37498.5, 45959.85]",
+      "woe": 0.0488,
+      "points": 28.1
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "bin": "(45959.85, 258025.5]",
+      "woe": 0.3465,
+      "points": 33.0
+    }
+  ]
+}
