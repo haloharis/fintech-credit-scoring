@@ -27,6 +27,7 @@ COPY src/ src/
 COPY api/ api/
 COPY app/ app/
 COPY models/ models/
+COPY reports/ reports/
 COPY monitoring/ monitoring/
 COPY sql/ sql/
 COPY .streamlit/ .streamlit/
