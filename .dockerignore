@@ -20,9 +20,8 @@ data/processed/
 # MLflow tracking (mount via volumes if needed)
 mlruns/
 
-# Notebooks & reports (not needed in API image)
+# Notebooks (not needed in the image); reports/ is kept because the dashboard reads it
 notebooks/
-reports/
 
 # Build artifacts
 *.egg-info
