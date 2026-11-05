@@ -87,18 +87,14 @@ def xgb_params(y: pd.Series) -> dict:
     }
 
 
-def main(data_dir: pathlib.Path, out_path: pathlib.Path) -> None:
-    t0 = time.time()
-    df = pd.read_csv(data_dir / "train_features.csv")
-    y = df["TARGET"]
-    X = df.drop(columns=["TARGET", "SK_ID_CURR"], errors="ignore")
-    print(f"Data: {X.shape[0]:,} rows x {X.shape[1]} features | default rate {y.mean():.2%}", flush=True)
-
+def run_models(X: pd.DataFrame, y: pd.Series, t0: float | None = None) -> dict:
+    """Split, cross-validate on train, score the hold-out once. Returns a report dict."""
+    t0 = t0 or time.time()
     X_tr, X_te, y_tr, y_te = train_test_split(
         X, y, test_size=TEST_SIZE, stratify=y, random_state=SEED
     )
     X_tr, y_tr = X_tr.reset_index(drop=True), y_tr.reset_index(drop=True)
-    print(f"Train {len(X_tr):,} | Hold-out {len(X_te):,} (never touched until the end)\n", flush=True)
+    print(f"Train {len(X_tr):,} | Hold-out {len(X_te):,} | {X.shape[1]} features", flush=True)
 
     skf = StratifiedKFold(n_splits=N_FOLDS, shuffle=True, random_state=SEED)
     cv = {"scorecard": [], "xgboost": []}
@@ -142,7 +138,7 @@ def main(data_dir: pathlib.Path, out_path: pathlib.Path) -> None:
             out[k] = {"mean": round(float(np.mean(vals)), 4), "std": round(float(np.std(vals)), 4)}
         return out
 
-    report = {
+    return {
         "split": {"type": "stratified random", "test_size": TEST_SIZE, "seed": SEED,
                   "n_train": len(X_tr), "n_holdout": len(X_te)},
         "n_features_input": X.shape[1],
@@ -151,15 +147,28 @@ def main(data_dir: pathlib.Path, out_path: pathlib.Path) -> None:
         "cv": {k: summarise(v) for k, v in cv.items()},
         "holdout": holdout,
     }
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(report, indent=2))
 
-    print("\n" + "=" * 60)
+
+def print_summary(report: dict) -> None:
     print(f"{'Model':<12}{'CV AUC':>16}{'Hold-out AUC':>14}{'Gini':>8}{'KS':>8}")
     for name in ("scorecard", "xgboost"):
         c = report["cv"][name]["AUC"]
-        h = holdout[name]
+        h = report["holdout"][name]
         print(f"{name:<12}{c['mean']:>10.4f}±{c['std']:.4f}{h['AUC']:>14.4f}{h['Gini']:>8.4f}{h['KS']:>8.4f}")
+
+
+def main(data_dir: pathlib.Path, out_path: pathlib.Path) -> None:
+    t0 = time.time()
+    df = pd.read_csv(data_dir / "train_features.csv")
+    y = df["TARGET"]
+    X = df.drop(columns=["TARGET", "SK_ID_CURR"], errors="ignore")
+    print(f"Data: {X.shape[0]:,} rows | default rate {y.mean():.2%}", flush=True)
+
+    report = run_models(X, y, t0)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(report, indent=2))
+    print("\n" + "=" * 60)
+    print_summary(report)
     print(f"\nSaved {out_path}  [{time.time() - t0:.0f}s total]")
 
 
