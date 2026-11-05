@@ -43,3 +43,7 @@ env/
 # ── OS ────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+
+# Local raw datasets (Kaggle, ~2.5 GB) and credit-bureau report images
+raw_data/
+.venv/

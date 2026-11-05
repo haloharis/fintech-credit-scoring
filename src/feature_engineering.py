@@ -129,6 +129,7 @@ def build_features(raw_dir: pathlib.Path, out_dir: pathlib.Path) -> pd.DataFrame
 
 
 def add_missing_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    """Add binary flags for informative missing values.
 
     Missingness is often informative in credit data -- for example,
     no bureau history means the applicant has no credit track record.
