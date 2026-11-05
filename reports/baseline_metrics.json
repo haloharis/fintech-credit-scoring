@@ -1,0 +1,95 @@
+{
+  "split": {
+    "type": "stratified random",
+    "test_size": 0.2,
+    "seed": 42,
+    "n_train": 246008,
+    "n_holdout": 61503
+  },
+  "n_features_input": 298,
+  "scorecard_features": [
+    "EXT_SOURCE_MIN",
+    "EXT_SOURCE_MAX",
+    "EXT_SRC3_x_AGE",
+    "EXT_SRC1_SQ",
+    "EXT_SRC2_x_AGE",
+    "avg_utilisation_ratio",
+    "avg_drawing_count",
+    "cc_utilisation_trend",
+    "INCOME_x_EXT2",
+    "avg_balance_last_12m",
+    "PAYMENT_RATE",
+    "std_cc_drawings",
+    "debt_to_credit_ratio",
+    "bureau_recent_ratio",
+    "DAYS_EMPLOYED",
+    "total_drawings",
+    "CREDIT_GOODS_RATIO",
+    "avg_days_since_update",
+    "AMT_GOODS_PRICE",
+    "late_ratio_trend",
+    "DAYS_BIRTH",
+    "latest_bureau_days",
+    "bureau_loans_last_12m",
+    "earliest_bureau_days",
+    "bb_months_covered",
+    "PAYMENT_DISCIPLINE",
+    "bureau_loans_last_24m",
+    "total_payment",
+    "late_ratio_last_12m",
+    "approval_rate",
+    "avg_debt",
+    "FREQ_NAME_INCOME_TYPE",
+    "bb_dpd_ratio",
+    "OWN_CAR_AGE",
+    "std_debt_amount",
+    "bb_closed_count",
+    "active_credits",
+    "refused_apps",
+    "AMT_CREDIT",
+    "CREDIT_x_AGE"
+  ],
+  "xgboost_n_estimators": 432,
+  "cv": {
+    "scorecard": {
+      "AUC": {
+        "mean": 0.752,
+        "std": 0.0026
+      },
+      "Gini": {
+        "mean": 0.5041,
+        "std": 0.0052
+      },
+      "KS": {
+        "mean": 0.3778,
+        "std": 0.0048
+      }
+    },
+    "xgboost": {
+      "AUC": {
+        "mean": 0.7859,
+        "std": 0.002
+      },
+      "Gini": {
+        "mean": 0.5718,
+        "std": 0.004
+      },
+      "KS": {
+        "mean": 0.4338,
+        "std": 0.0058
+      }
+    }
+  },
+  "holdout": {
+    "scorecard": {
+      "AUC": 0.7547,
+      "Gini": 0.5094,
+      "KS": 0.3815
+    },
+    "xgboost": {
+      "AUC": 0.7897,
+      "Gini": 0.5795,
+      "KS": 0.4365
+    }
+  }
+}
